@@ -1,10 +1,11 @@
 <main class="p-5 w-full max-w-200 mt-10 ml-auto mr-auto bg-blue-200 rounded">
   <h1 class="text-center">{{title()}}</h1>
-  <p>{{listaContatos()[0].nome}}</p>
+  @for(cont of listaContatos(); track cont){
+    <p>{{ cont.nome }} - {{cont.telefone}}</p>
+  }
   <button></button>
 </main>
 
-<app-lista-contatos/>
-<app-form-contato/>
+<app-adiciona-contato/>
 
 <router-outlet />
