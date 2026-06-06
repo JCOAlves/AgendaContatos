@@ -38,4 +38,10 @@ export class App {
     new Contato("Júlio César", "84 91234-5678", "julio@gmail.com", "14/12/2005")
   ]);
 
-}
+  cadastrarContato(nome: string, telefone: string, email: string, aniversario: string | Date, tipo: Tipos | ""){
+    this.listaContatos.update((contatos) => [...contatos, new Contato(nome, telefone, email, aniversario, tipo)]);
+    alert("Novo contato criado com sucesso.");
+    return;
+  };
+
+};

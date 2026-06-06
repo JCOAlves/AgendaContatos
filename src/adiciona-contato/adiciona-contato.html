@@ -1,18 +1,26 @@
-<form action="POST" class="flex flex-col content-center align-center">
+<form class="w-full min-w-90 flex flex-col content-center align-center p-5 border-1 rounded bg-blue-50" [formGroup]="formContato" (ngSumit)="onSubmit()">
+    <h2 class="text-[26px] text-center mb-4">Cadastro de novo Contato</h2>
+    
     <label for="nomeContato">Nome Contato<span class="text-red-600">*</span></label>
-    <input type="text" name="nomeContato" id="nomeContato">
+    <input type="text" name="nomeContato" id="nomeContato" placeholder="Nome e sobrenome" maxlength="100" required>
 
     <label for="telefoneContato">Número de Telefone<span class="text-red-600">*</span></label>
-    <input type="tel" name="telefoneContato" id="telefoneContato">
+    <input type="tel" name="telefoneContato" id="telefoneContato" placeholder="Ex.: (84) 94002-8922" maxlength="20" required>
 
-    <input type="email" name="" id="">
-    <input type="date" name="" id="">
-    <select name="" id="">
-        <option value="">Tipo contato</option>
-        <option value="">Amigo</option>
-        <option value="">Família</option>
-        <option value="">Trabalho</option>
+    <label for="emailContato">Endereço de Email</label>
+    <input type="email" name="emailContato" id="emailContato" maxlength="100">
+
+    <label for="dataAniversario">Data de Aniversário</label>
+    <input type="month" name="dataAniversario" id="dataAniversario">
+
+    <label for="tipoContato">Tipo de Contato</label>
+    <select name="tipoContato" id="tipoContato">
+        <option value="" disabled>Tipo contato</option>
+        <option value="Amigo">Amigo</option>
+        <option value="Familia">Família</option>
+        <option value="Trabalho">Trabalho</option>
     </select>
-
-
+    <div class="content-center align-center text-center w-auto">
+        <button type="submit" class="mt-3 bg-gray-400 w-30 p-2 rounded hover:bg-gray-500 hover:text-white">Cadastrar</button>
+    </div>
 </form>

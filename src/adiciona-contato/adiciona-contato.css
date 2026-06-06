@@ -6,3 +6,7 @@ input, select{
     margin-top: 8px;
     margin-bottom: 18px;
 }
+
+label{
+    font-size: 18px;
+}
