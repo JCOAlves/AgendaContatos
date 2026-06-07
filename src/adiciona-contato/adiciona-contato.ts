@@ -1,6 +1,12 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
+enum Tipos {
+  Amigo = "Amigo",
+  Trabalho = "Trabalho",
+  Familia = "Família",
+};
+
 @Component({
   selector: 'app-adiciona-contato',
   imports: [ReactiveFormsModule],
@@ -22,7 +28,7 @@ export class AdicionaContato {
 
   });
 
-  onSubmit(){
+  onSubmit(nome: string, telefone: string, email: string, aniversario: string | Date, tipo: Tipos | string){
     if(this.formContato.valid){
       this.cadastraContato.emit();
       return;

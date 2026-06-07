@@ -1,14 +1,16 @@
-<main class="p-5 w-full max-w-250 mt-10 mb-10 ml-auto mr-auto bg-blue-200 rounded flex  flex-col align-center">
+<main class="p-4 w-full max-w-250 mt-10 mb-10 ml-auto mr-auto bg-blue-200 rounded flex  flex-col align-center">
   <h1 class="text-center mb-5">{{title()}}</h1>
   <div class="flex flex-col sm:flex-row gap-4 justify-between">
-    <div class="p-3 border-1 rounded bg-blue-50 w-full">
+    <div class="p-3 border-1 rounded bg-blue-50 w-full min-h-130">
+      <button class="mb-3 bg-gray-300 w-auto p-2 rounded hover:bg-gray-500 hover:text-white" (click)="exibirForm()">{{tituloBotao()}}</button>
       @for(cont of listaContatos(); track cont){
-        <p>{{ cont.nome }} - {{cont.telefone}}</p>
+        <p class="p-[8px_0px] border-[0px_0px_1px_0px]">{{ cont.nome }} - {{cont.telefone}}</p>
       }
-      <button></button>
     </div>
     <div class=""><!--Adicionar parametros de função-->
-      <app-adiciona-contato (cadastraContato)="cadastrarContato()"/>
+      @if(exibiForm()){
+        <app-adiciona-contato (cadastraContato)="cadastrarContato($event)"/>
+      }
     </div>
   </div>
 </main>
