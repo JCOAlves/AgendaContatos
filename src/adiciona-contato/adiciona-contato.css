@@ -10,3 +10,7 @@ input, select{
 label{
     font-size: 18px;
 }
+
+button:disabled{
+    cursor: not-allowed;
+}

@@ -38,8 +38,8 @@ export class App {
   protected readonly tituloBotao = signal<string>('Adicionar contato');
   protected readonly listaContatos = signal<Contato[]>([
     new Contato("Júlio César", "84 91234-5678", "julio@gmail.com", "14/12/2005"),
-    new Contato("Júlio César", "84 91234-5678", "julio@gmail.com", "14/12/2005"),
-    new Contato("Júlio César", "84 91234-5678", "julio@gmail.com", "14/12/2005"),
+    new Contato("Ana Júlia", "84 91234-5678", "julia@gmail.com", "18/01/2003"),
+    new Contato("César", "84 91234-5678", "cesar@gmail.com", "18/02/2005"),
   ]);
 
   exibirForm(){
@@ -48,10 +48,16 @@ export class App {
     return;
   };
 
-  cadastrarContato(nome: string, telefone: string, email: string, aniversario: string | Date, tipo: Tipos | string){
-    this.listaContatos.update((contatos) => [...contatos, new Contato(nome, telefone, email, aniversario, tipo)]);
+  cadastrarContato(novoContato: any){
+    const nomeContato = new Contato(
+      novoContato.nomeContato, 
+      novoContato.telefoneContato, 
+      novoContato.emailContato, 
+      novoContato.dataAniversario, 
+      novoContato.tipoContato
+    );
+    this.listaContatos.update((contatos) => [...contatos, nomeContato]);
     this.exibirForm();
-    alert("Novo contato criado com sucesso.");
     return;
   };
 
