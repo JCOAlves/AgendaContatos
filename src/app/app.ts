@@ -1,33 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { AdicionaContato } from "../adiciona-contato/adiciona-contato"
-
-enum Tipos {
-  Amigo = "Amigo",
-  Trabalho = "Trabalho",
-  Familia = "Família",
-};
-
-class Contato {
-  public nome: string;
-  public telefone: string;
-  public email: string
-  public aniversario: Date | string
-  public tipo: Tipos | string
-
-  constructor(nome: string, telefone: string, email: string = "", aniversario: Date | string = "", tipo: Tipos | string = ""){
-    this.nome = nome;
-    this.telefone = telefone;
-    this.email = email;
-    this.aniversario = aniversario;
-    this.tipo = tipo;
-  }
-
-}
+import { ListagemContatos } from "../listagem-contatos/listagem-contatos";
+import { AdicionaContato } from "../adiciona-contato/adiciona-contato";
+import { Contato } from "../contatos";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AdicionaContato],
+  imports: [ListagemContatos, AdicionaContato],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -56,9 +34,32 @@ export class App {
       novoContato.dataAniversario, 
       novoContato.tipoContato
     );
+    let contatoExistente: boolean = false;
+
+    this.listaContatos().forEach(cont => {
+      if(cont.telefone === nomeContato.telefone && cont.nome === nomeContato.nome){ 
+        contatoExistente = true;
+      };
+    });
+
+    if(!contatoExistente){
+      alert("Contato já cadastrado no sistema");
+      return;
+    };
+
     this.listaContatos.update((contatos) => [...contatos, nomeContato]);
     this.exibirForm();
     return;
   };
+
+  deletaContato(nome: string, telefone: string | number){
+    this.listaContatos().forEach(cont => {
+      if(cont.nome === nome && cont.telefone === telefone){
+        const listaFiltrada = this.listaContatos().filter(p => cont.nome != nome && cont.telefone != telefone);
+        this.listaContatos.set(listaFiltrada);
+      };
+
+    });
+  }
 
 };

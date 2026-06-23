@@ -1,11 +1,7 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Tipos } from "../contatos";
 
-enum Tipos {
-  Amigo = "Amigo",
-  Trabalho = "Trabalho",
-  Familia = "Família",
-};
 
 @Component({
   selector: 'app-adiciona-contato',
