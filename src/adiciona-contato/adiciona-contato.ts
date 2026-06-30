@@ -18,7 +18,7 @@ export class AdicionaContato {
   formContato = this.fb.group({
     nomeContato: ['', [Validators.required, Validators.maxLength(100)]],
     telefoneContato: ['', [Validators.required, Validators.maxLength(16)]],
-    emailContato: ['', Validators.email],
+    emailContato: ['', [Validators.required, Validators.email]],
     dataAniversario: [''],
     tipoContato: ['']
 

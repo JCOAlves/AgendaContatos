@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Contato } from "../contatos"
 
 @Component({
@@ -8,5 +8,6 @@ import { Contato } from "../contatos"
   styleUrl: './listagem-contatos.css',
 })
 export class ListagemContatos {
-  @Input() listaContatos: Contato[] = []
+  @Input() listaContatos: Contato[] = [];
+  @Output() removeContato = new EventEmitter<any>();
 }

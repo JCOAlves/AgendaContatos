@@ -1,9 +1,14 @@
 <div class="flex flex-col gap-3">
     @for(cont of listaContatos; track cont){
-    <p class="p-2 bg-green-200 gap-2 rounded">
-        <span class="font-black">{{ cont.nome }}</span> <br>
-        <span>{{cont.telefone}} - {{cont.email}}</span> <br>
-        <span>Aniversario: {{cont.aniversario}} @if(cont.tipo){ - Tipo: {{cont.tipo}} }</span>
-    </p>
+    <div class="p-3 bg-green-200 gap-2 rounded flex justify-between">
+        <div class="">
+            <span class="font-black">{{ cont.nome }}</span> <br>
+            <span>{{cont.telefone}} - {{cont.email}}</span> <br>
+            <span>Aniversario: {{cont.aniversario}} @if(cont.tipo){ - Tipo: {{cont.tipo}} }</span>
+        </div>
+        <div class="flex justify-center content-center">
+            <button class="mt-4 p-2 bg-red-500 rounded w-20 h-10" (click)="removeContato.emit(cont)" >Remover</button>
+        </div>
+    </div>
     }
 </div>
